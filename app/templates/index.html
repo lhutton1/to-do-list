@@ -1,0 +1,18 @@
+<html>
+  <head>
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>No title</title>
+    {% endif %}
+
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='bootstrap.min.css')}}" />
+    <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}" />
+
+    <script type="text/javascript" href="{{ url_for('static', filename='bootstrap.min.js')}}"></script>
+  </head>
+
+  <body>
+    {% include'navigation.html' %}
+  </body>
+</html>
