@@ -1,3 +1,12 @@
+/* @mixins */
+@mixin appearence($value) {
+  -webkit-appearance:     $value;
+  -moz-appearance:        $value;
+  -ms-appearance:         $value;
+  -o-appearance:          $value;
+  appearance:             $value;
+}
+
 html {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -8,6 +17,10 @@ html {
   -webkit-box-sizing: inherit;
   -moz-box-sizing: inherit;
   box-sizing: inherit;
+}
+
+.nodisplay {
+  display:none !important;
 }
 
 body {
@@ -25,13 +38,27 @@ nav.navbar {
 
 .task {
   position: relative;
-  padding: 50px 20px 20px 70px;
+  padding: 10px 40px 20px 40px;
 
   .actions {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 10px;
     z-index: 1;
+    text-align: right;
+    margin-bottom: 20px;
+  }
+
+  input, textarea {
+    @include appearence(none);
+    background-color: transparent;
+    outline: none;
+    border: none;
+  }
+
+  input {
+    width: 60%;
+  }
+
+  textarea {
+    width: 100%;
+    min-height: 40px;
   }
 }

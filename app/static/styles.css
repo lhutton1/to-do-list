@@ -8,21 +8,36 @@ html {
     -moz-box-sizing: inherit;
     box-sizing: inherit; }
 
-    body {
-      margin: 0;
-      padding: 0; }
-      body section#content {
-        padding-top: 80px; }
+    .nodisplay {
+      display: none !important; }
+
+      body {
+        margin: 0;
+        padding: 0; }
+        body section#content {
+          padding-top: 80px; }
 
 nav.navbar {
   margin-bottom: 30px; }
 
   .task {
     position: relative;
-    padding: 50px 20px 20px 70px; }
+    padding: 10px 40px 20px 40px; }
     .task .actions {
-      position: absolute;
-      top: 0;
-      right: 0;
-      margin: 10px;
-      z-index: 1; }
+      z-index: 1;
+      text-align: right;
+      margin-bottom: 20px; }
+      .task input, .task textarea {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        -ms-appearance: none;
+        -o-appearance: none;
+        appearance: none;
+        background-color: transparent;
+        outline: none;
+        border: none; }
+        .task input {
+          width: 60%; }
+          .task textarea {
+            width: 100%;
+            min-height: 40px; }
