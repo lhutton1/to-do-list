@@ -13,6 +13,10 @@ html {
 body {
   margin: 0;
   padding: 0;
+
+  section#content {
+    padding-top: 80px;
+  }
 }
 
 nav.navbar {
@@ -21,12 +25,13 @@ nav.navbar {
 
 .task {
   position: relative;
-  padding: 25px;
+  padding: 50px 20px 20px 70px;
 
   .actions {
     position: absolute;
     top: 0;
     right: 0;
     margin: 10px;
+    z-index: 1;
   }
 }

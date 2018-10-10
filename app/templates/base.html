@@ -1,0 +1,20 @@
+<html>
+  <head>
+    {% if title %}
+    <title>{{ title }}</title>
+    {% else %}
+    <title>No title</title>
+    {% endif %}
+
+    {% include 'includes.html' %}
+  </head>
+
+  <body>
+    {% include'navigation.html' %}
+
+    <section id="content">
+    {% block content %}
+    {% endblock %}
+    </section>
+  </body>
+</html>

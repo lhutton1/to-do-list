@@ -1,25 +1,17 @@
-<html>
-  <head>
-    {% if title %}
-    <title>{{ title }}</title>
-    {% else %}
-    <title>No title</title>
-    {% endif %}
+{% extends "base.html" %}
 
-    {% include 'includes.html' %}
-  </head>
-
-  <body>
-    {% include'navigation.html' %}
-
-    <section>
-      <div class="container">
-        <div class="row">
-          {% include 'task.html' %}
-          {% include 'task.html' %}
-          {% include 'task.html' %}
-        </div>
-      </div>
-    </section>
-  </body>
-</html>
+{% block content %}
+<div id="content-container" class="container">
+  <div class="row">
+    {% for task in tasks %}
+    <div class="col-12">
+      <p>
+        {% with taskDetails = task, edit = isEdit %}
+          {% include'task.html' %}
+        {% endwith %}
+      </p>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

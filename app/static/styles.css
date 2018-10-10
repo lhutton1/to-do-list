@@ -11,15 +11,18 @@ html {
     body {
       margin: 0;
       padding: 0; }
+      body section#content {
+        padding-top: 80px; }
 
-      nav.navbar {
-        margin-bottom: 30px; }
+nav.navbar {
+  margin-bottom: 30px; }
 
-        .task {
-          position: relative;
-          padding: 25px; }
-          .task .actions {
-            position: absolute;
-            top: 0;
-            right: 0;
-            margin: 10px; }
+  .task {
+    position: relative;
+    padding: 50px 20px 20px 70px; }
+    .task .actions {
+      position: absolute;
+      top: 0;
+      right: 0;
+      margin: 10px;
+      z-index: 1; }

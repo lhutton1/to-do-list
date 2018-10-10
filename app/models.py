@@ -5,3 +5,6 @@ class Task(db.Model):
     title = db.Column(db.String(100))
     description = db.Column(db.String(500))
     completed = db.Column(db.Boolean)
+
+    def __repr__(self):
+        return '<Task {}>'.format(self.title)
