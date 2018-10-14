@@ -13,15 +13,15 @@
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <a class="nav-link" href="/new-task">Add new task</a>
+        <a id="new-task" class="nav-link" href="#">Add new task</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">View</a>
+        <label class="nav-link dropdown-toggle" id="view" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">View</label>
 
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">All tasks</a>
-          <a class="dropdown-item" href="#">Complete tasks</a>
-          <a class="dropdown-item" href="#">Incomplete tasks</a>
+            <label id="all-tasks" class="dropdown-item"><input type="radio" name="All tasks" autocomplete="off"> All tasks</label>
+            <label id="complete-tasks" class="dropdown-item"><input type="radio" name="All tasks" autocomplete="off" checked> Complete tasks</label>
+            <label id="incomplete-tasks" class="dropdown-item"><input type="radio" name="All tasks" autocomplete="off"> Incomplete tasks</label>
         </div>
       </li>
     </ul>

@@ -8,12 +8,12 @@ task block.
     <div class="actions">
       <div data-view="info">
         {% if taskDetails.completed %}
-          <button id="complete" type="button" class="btn btn btn-outline-danger btn-sm" aria-label="Complete">
+          <button id="incomplete" type="button" class="btn btn btn-outline-danger btn-sm" aria-label="Complete">
             <i class="fas fa-undo"></i>
             Mark as incomplete
           </button>
         {% else %}
-          <button id="incomplete" type="button" class="btn btn btn-outline-success btn-sm" aria-label="Incomplete">
+          <button id="complete" type="button" class="btn btn btn-outline-success btn-sm" aria-label="Incomplete">
             <i class="fas fa-check"></i>
             Mark as complete
           </button>
@@ -24,7 +24,7 @@ task block.
           Edit
         </button>
 
-        <button id="delete" type="button" class="btn btn btn-outline-dark btn-sm" aria-label="Delete">
+        <button id="delete" type="button" class="btn btn btn-outline-danger btn-sm" aria-label="Delete">
           <i class="fas fa-times"></i>
           Remove
         </button>
@@ -41,7 +41,6 @@ task block.
           Submit
         </button>
       </div>
-
     </div>
 
     <div class="row">
