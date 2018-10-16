@@ -13,29 +13,6 @@ $(document).on('click', '.task .actions #cancel-edit', function() {
   handleEditTask(clickedTask, false);
 });
 
-$(document).on('change', '#all-tasks input, #complete-tasks input, #incomplete-tasks input', function() {
-  console.log('running');
-  $.ajax({
-    url: '/changeTaskOrder',
-    type: 'post',
-    data: JSON.stringify({
-      taskView: 'INCOMPLETE'
-    }),
-    contentType: 'application/json; charset=utf-8',
-    dataType: 'json',
-    success: function(response){
-        // reload the section of the site responsible
-        // for displaying the tasks.
-        if (response.reload) {
-          reloadTasks(response.newTaskId);
-        }
-    },
-    error: function(error){
-        console.log(error);
-    }
-  });
-});
-
 
 // AJAX request to delete a task from the database and upade the list.
 $(document).on('click', '.task #delete', function() {

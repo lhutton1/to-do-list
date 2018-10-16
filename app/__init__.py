@@ -15,7 +15,6 @@ Scss(app)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 api = Api(app)
-databaseView = 0
 
 from app import views
 from app import models

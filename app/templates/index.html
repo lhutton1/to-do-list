@@ -2,15 +2,15 @@
 {% block content %}
 <div id="content-container" class="container">
   <div class="row">
-    {% for task in tasks %}
-    <div class="col-12">
-      <p>
-        {% with taskDetails = task, edit = isEdit %}
-          {% include'task.html' %}
-        {% endwith %}
-      </p>
-    </div>
-    {% endfor %}
+      {% for task in tasks %}
+      <div class="col-12">
+        <p>
+          {% with taskDetails = task, edit = isEdit %}
+            {% include'task.html' %}
+          {% endwith %}
+        </p>
+      </div>
+      {% endfor %}
   </div>
 </div>
 {% endblock %}

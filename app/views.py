@@ -1,21 +1,14 @@
 from flask import request, render_template, redirect
-from app import app, db, databaseView
+from app import app, db
 from app.models import Task
 import json
+import datetime
 
 """
 Index page
 """
 @app.route('/')
 def index():
-    taskView = 0
-    if databaseView == 0:
-        taskView = db.session.query(Task).order_by(Task.id.desc()).all()
-    elif databaseView == 1:
-        taskView = db.session.query(Task).order_by(Task.id.desc()).filter_by(completed = True)
-    elif databaseView == 2:
-        taskView = db.session.query(Task).order_by(Task.id.desc()).filter_by(completed = False)
-
     return render_template( 'index.html',
         title='To-do list',
         tasks=db.session.query(Task).order_by(Task.id.desc()).all()
@@ -62,12 +55,11 @@ AJAX request to add task to the database
 """
 @app.route('/newTask', methods=['POST'])
 def newTask():
-    newTask = Task(title='Not set', description='Not set', completed=False)
+    newTask = Task(title='Not set', description='Not set', completed=False, dateAdded=datetime.datetime.now())
     db.session.add(newTask)
     db.session.commit()
 
-    return json.dumps({'status': 'OK', 'response': 'new task', 'reload': True, 'newTaskId': newTask.id})
-    #return json.dumps({'status': 'ERROR', 'response': 'task could not be edited'})
+    return json.dumps({'status': 'OK', 'response': 'new task', 'reload': True})
 
 """
 AJAX request to change completed state of a task
@@ -85,11 +77,3 @@ def changeComplete():
         return json.dumps({'status': 'OK', 'response': 'change complete', 'completed': completed, 'reload': True})
     except:
         return json.dumps({'status': 'ERROR', 'response': 'task could not be edited'})
-
-"""
-AJAX request to change task order
-"""
-@app.route('/changeTaskOrder', methods=['POST'])
-def changeTaskOrder():
-    databaseView = 2
-    return json.dumps({'status': 'OK', 'response': 'new task', 'reload': True})
