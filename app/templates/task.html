@@ -49,16 +49,16 @@ task block.
           <hr class="my-4">
           <p>{{ taskDetails.description }}</p>
       </div>
-      <div class="col-12" data-view="edit">
-        <input placeholder="enter title..." type="text" name="title-input" class="task-input"/>
+      <div id="edit-form" class="col-12" data-view="edit">
+        {{ form.title }}
         <hr class="my-4">
-        <textarea placeholder="enter description..." name="description-input" class="task-input"></textarea>
+        {{ form.description }}
       </div>
     </div>
     <div class="row">
       <div class="col-12 date-container">
         <p>
-          Date added: {{ taskDetails.dateAdded.date() }}
+          Date added: {{ taskDetails.dateAdded.date().strftime("%d-%m-%Y") }}
         </p>
       </div>
     </div>

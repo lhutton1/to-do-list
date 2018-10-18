@@ -1,17 +1,36 @@
 from flask import request, render_template, redirect
 from app import app, db
 from app.models import Task
+from app.forms import EditForm
 import json
 import datetime
 
 """
 Index page
+
+the argument filterBy can be used to filter the tasks:
+    -   complete -> shows only tasks that are complete.
+    -   incomplete -> shows only tasks that are incomplete.
+    -   any other argument means all tasks are displayed.
 """
-@app.route('/')
+@app.route('/', methods=['GET'])
 def index():
+    title = 'To-do List'
+    form = EditForm()
+    taskOrderQuery = db.session.query(Task).order_by(Task.id.desc()).all()
+
+    if request.method == 'GET':
+        filter = request.args.get("filterBy", type = str)
+
+        if filter == 'complete':
+            taskOrderQuery = db.session.query(Task).filter_by(completed = True)
+        if filter == 'incomplete':
+            taskOrderQuery = db.session.query(Task).filter_by(completed = False)
+
     return render_template( 'index.html',
-        title='To-do list',
-        tasks=db.session.query(Task).order_by(Task.id.desc()).all()
+        title = title,
+        tasks = taskOrderQuery,
+        form = form
     )
 
 """
@@ -59,7 +78,7 @@ def newTask():
     db.session.add(newTask)
     db.session.commit()
 
-    return json.dumps({'status': 'OK', 'response': 'new task', 'reload': True})
+    return json.dumps({'status': 'OK', 'response': 'new task', 'reload': True, 'newTaskId': newTask.id})
 
 """
 AJAX request to change completed state of a task

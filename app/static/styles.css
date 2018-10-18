@@ -19,30 +19,32 @@ html {
 
 nav.navbar {
   margin-bottom: 30px; }
+  nav.navbar a, nav.navbar label {
+    cursor: pointer; }
 
-  .task {
-    position: relative;
-    padding: 10px 40px 20px 40px; }
-    .task .actions {
-      z-index: 1;
-      text-align: right;
-      margin-bottom: 20px; }
-      .task input, .task textarea {
-        -webkit-appearance: none;
-        -moz-appearance: none;
-        -ms-appearance: none;
-        -o-appearance: none;
-        appearance: none;
-        background-color: transparent;
-        outline: none;
-        border: none; }
-        .task input {
-          width: 60%; }
-          .task textarea {
-            width: 100%;
-            min-height: 40px; }
-            .task .date-container {
-              font-size: 10px;
-              text-align: right;
-              color: #666;
-              padding-top: 10px; }
+.task {
+  position: relative;
+  padding: 10px 40px 20px 40px; }
+  .task .actions {
+    z-index: 1;
+    text-align: right;
+    margin-bottom: 20px; }
+    .task #edit-form input, .task #edit-form textarea {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      -ms-appearance: none;
+      -o-appearance: none;
+      appearance: none;
+      background-color: transparent;
+      outline: none;
+      border: none; }
+      .task #edit-form input {
+        width: 60%; }
+        .task #edit-form textarea {
+          width: 100%;
+          min-height: 40px; }
+  .task .date-container {
+    font-size: 10px;
+    text-align: right;
+    color: #666;
+    padding-top: 10px; }

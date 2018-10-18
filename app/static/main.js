@@ -1,6 +1,15 @@
 $(document).ready(function() {
   $('.task').data('edit', false);
   $('.task div[data-view="edit"]').addClass('nodisplay');
+
+  currentFilter = new URL(window.location).searchParams.get('filterBy');
+
+  if ( currentFilter == 'complete')
+    document.querySelector('#complete-tasks input').checked = true;
+  else if (currentFilter == 'incomplete')
+    document.querySelector('#incomplete-tasks input').checked = true;
+  else
+    document.querySelector('#all-tasks input').checked = true;
 });
 
 $(document).on('click', '.task .actions #edit', function() {
@@ -45,8 +54,8 @@ $(document).on('click', '.task #submit-edit', function() {
     url: '/editTask',
     type: 'post',
     data: JSON.stringify({
-      title: $('#' + taskId + ' input[name="title-input"]').val(),
-      description: $('#' + taskId + ' textarea[name="description-input"]').val(),
+      title: $('#' + taskId + ' input[name="title"]').val(),
+      description: $('#' + taskId + ' textarea[name="description"]').val(),
       parentId: taskId
     }),
     contentType: 'application/json; charset=utf-8',
@@ -114,6 +123,18 @@ $(document).on('click', '#complete, #incomplete', function() {
   });
 });
 
+$(document).on('click', '#all-tasks', function() {
+  window.location = "/?filterBy=all";
+});
+
+$(document).on('click', '#complete-tasks', function() {
+  window.location = "/?filterBy=complete";
+});
+
+$(document).on('click', '#incomplete-tasks', function() {
+  window.location = "/?filterBy=incomplete";
+});
+
 
 // Reload all tasks on the page
 function reloadTasks(taskId) {
@@ -124,6 +145,7 @@ function reloadTasks(taskId) {
     // if a task parameter is provided then set this
     // task to display the editing view.
     if (typeof taskId != "undefined") {
+      console.log('found item to open edit');
       $('.task#taskItem-' + taskId).data('edit', true);
       $('.task#taskItem-' + taskId + ' div[data-view="edit"]').removeClass('nodisplay');
       $('.task#taskItem-' + taskId + ' div[data-view="info"]').addClass('nodisplay');
