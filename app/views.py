@@ -59,8 +59,11 @@ def removeTask():
     if request.method == 'GET':
         taskID = request.args.get("taskId", type = int)
 
-        db.session.delete(Task.query.get(taskID))
-        db.session.commit()
+        try:
+            db.session.delete(Task.query.get(taskID))
+            db.session.commit()
+        except:
+            return redirect('/')
 
     return redirect('/')
 
