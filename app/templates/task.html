@@ -8,37 +8,20 @@ task block.
     <div class="actions">
       <div data-view="info">
         {% if taskDetails.completed %}
-          <button id="incomplete" type="button" class="btn btn btn-outline-danger btn-sm" aria-label="Complete">
+          <button id="incomplete" type="button" class="btn btn btn-outline-danger btn-sm" aria-label="Complete" onclick="document.location.href='/markTask?taskId={{ taskDetails.id }}&complete=False';">
             <i class="fas fa-undo"></i>
             Mark as incomplete
           </button>
         {% else %}
-          <button id="complete" type="button" class="btn btn btn-outline-success btn-sm" aria-label="Incomplete">
+          <button id="complete" type="button" class="btn btn btn-outline-success btn-sm" aria-label="Incomplete" onclick="document.location.href='/markTask?taskId={{ taskDetails.id }}&complete=True';">
             <i class="fas fa-check"></i>
             Mark as complete
           </button>
         {% endif %}
 
-        <button id="edit" type="button" class="btn btn btn-outline-dark btn-sm" aria-label="Edit">
-          <i class="fas fa-pencil-alt"></i>
-          Edit
-        </button>
-
-        <button id="delete" type="button" class="btn btn btn-outline-danger btn-sm" aria-label="Delete">
+        <button id="delete" type="button" class="btn btn btn-outline-danger btn-sm" aria-label="Delete" onclick="document.location.href='/removeTask?taskId={{ taskDetails.id }}';">
           <i class="fas fa-times"></i>
           Remove
-        </button>
-      </div>
-
-      <div data-view="edit">
-        <button id="cancel-edit" type="button" class="btn btn btn-outline-danger btn-sm" aria-label="Cancel">
-          <i class="fas fa-times"></i>
-          Cancel
-        </button>
-
-        <button id="submit-edit" type="button" class="btn btn btn-outline-success btn-sm" aria-label="Submit">
-          <i class="fas fa-check"></i>
-          Submit
         </button>
       </div>
     </div>
@@ -48,11 +31,6 @@ task block.
           <h4 class="lead">{{ taskDetails.title }}</h4>
           <hr class="my-4">
           <p>{{ taskDetails.description }}</p>
-      </div>
-      <div id="edit-form" class="col-12" data-view="edit">
-        {{ form.title }}
-        <hr class="my-4">
-        {{ form.description }}
       </div>
     </div>
     <div class="row">

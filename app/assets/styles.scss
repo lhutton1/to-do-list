@@ -38,6 +38,10 @@ nav.navbar {
   a, label {
     cursor: pointer;
   }
+
+  .dropdown-toggle {
+    margin-bottom: 0;
+  }
 }
 
 .task {
@@ -50,28 +54,34 @@ nav.navbar {
     margin-bottom: 20px;
   }
 
-  #edit-form {
-    input, textarea {
-      @include appearence(none);
-      background-color: transparent;
-      outline: none;
-      border: none;
-    }
-
-    input {
-      width: 60%;
-    }
-
-    textarea {
-      width: 100%;
-      min-height: 40px;
-    }
-  }
-
   .date-container {
     font-size: 10px;
     text-align: right;
     color: #666;
     padding-top: 10px;
+  }
+}
+
+.new-task{
+  padding: 50px 60px 20px 60px;
+
+  input#title, textarea#description {
+    @include appearence(none);
+    background-color: transparent;
+    outline: none;
+    border: none;
+  }
+
+  input#title {
+    width: 80%;
+  }
+
+  textarea#description {
+    width: 100%;
+    min-height: 50px;
+  }
+
+  .form-error {
+    color: red;
   }
 }

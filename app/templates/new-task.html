@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<div id="content-container" class="container">
+  <div class="row">
+    <div class="col-12">
+      <div class="new-task jumbotron">
+        <form action="" method="post" novalidate>
+            {{ form.hidden_tag() }}
+            <h4 class="lead">
+              {{ form.title() }}
+              {% if form.title.errors %}
+                {% for error in form.title.errors %}
+                  <p class="form-error">{{ error }}</p>
+                {% endfor %}
+              {% endif %}
+            </h4>
+            <hr class="my-4">
+            <p>
+              {{ form.description() }}
+              {% if form.description.errors %}
+                {% for error in form.description.errors %}
+                  <p class="form-error">{{ error }}</p>
+                {% endfor %}
+              {% endif %}
+            </p>
+            {{ form.submit(class_='btn btn btn-outline-success btn-sm') }}
+
+            <button id="cancel-edit" type="button" class="btn btn btn-outline-danger btn-sm" aria-label="Cancel" onclick="document.location.href='/';">
+              Cancel
+            </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

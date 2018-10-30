@@ -2,6 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, TextAreaField, SubmitField
 from wtforms.validators import DataRequired
 
+
 class EditForm(FlaskForm):
     title = StringField('title',
         validators=[DataRequired()],
@@ -12,3 +13,5 @@ class EditForm(FlaskForm):
         validators=[DataRequired()],
         render_kw={'placeholder' : 'enter description...'}
     )
+
+    submit = SubmitField('Submit')
