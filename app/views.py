@@ -71,15 +71,26 @@ Mask task as complete or incomplete
 @app.route('/markTask', methods=['GET'])
 def markTask():
     if request.method == 'GET':
-        taskID = request.args.get("taskId", type = int)
+        taskID = request.args.get("taskId", type = str)
         complete = request.args.get("complete", type = str)
 
+        try:
+            taskID = int(taskID)
+        except:
+            return redirect('/')
+
         if complete == "True":
-            task = Task.query.get(taskID)
-            task.completed = True
+            try:
+                task = Task.query.get(taskID)
+                task.completed = True
+            except:
+                return redirect('/')
         elif complete == "False":
-            task = Task.query.get(taskID)
-            task.completed = False
+            try:
+                task = Task.query.get(taskID)
+                task.completed = False
+            except:
+                return redirect('/')
 
         db.session.commit()
 
