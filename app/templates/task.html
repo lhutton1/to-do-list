@@ -1,31 +1,36 @@
 <!--
-Task template. Contains the html code used for each
-task block.
+Task template. Contains the html code used for each task block.
 -->
 
 <div class="col-12">
   <div id="taskItem-{{ taskDetails.id }}" class="task jumbotron">
+
+    <!-- actions provided in the top right corner of each task -->
     <div class="actions">
       <div data-view="info">
         {% if taskDetails.completed %}
-          <button id="incomplete" type="button" class="btn btn btn-outline-danger btn-sm" aria-label="Complete" onclick="document.location.href='/markTask?taskId={{ taskDetails.id }}&complete=False';">
+          <button id="incomplete" type="button" class="btn btn btn-outline-danger btn-sm" aria-label="Complete"
+                  onclick="document.location.href='/markTask?taskId={{ taskDetails.id }}&complete=False';">
             <i class="fas fa-undo"></i>
             Mark as incomplete
           </button>
         {% else %}
-          <button id="complete" type="button" class="btn btn btn-outline-success btn-sm" aria-label="Incomplete" onclick="document.location.href='/markTask?taskId={{ taskDetails.id }}&complete=True';">
+          <button id="complete" type="button" class="btn btn btn-outline-success btn-sm" aria-label="Incomplete"
+                  onclick="document.location.href='/markTask?taskId={{ taskDetails.id }}&complete=True';">
             <i class="fas fa-check"></i>
             Mark as complete
           </button>
         {% endif %}
 
-        <button id="delete" type="button" class="btn btn btn-outline-danger btn-sm" aria-label="Delete" onclick="document.location.href='/removeTask?taskId={{ taskDetails.id }}';">
+        <button id="delete" type="button" class="btn btn btn-outline-danger btn-sm" aria-label="Delete"
+                onclick="document.location.href='/removeTask?taskId={{ taskDetails.id }}';">
           <i class="fas fa-times"></i>
           Remove
         </button>
       </div>
     </div>
 
+    <!-- title and description of each task -->
     <div class="row">
       <div class="col-12" data-view="info">
           <h4 class="lead">{{ taskDetails.title }}</h4>
@@ -33,6 +38,8 @@ task block.
           <p>{{ taskDetails.description }}</p>
       </div>
     </div>
+
+    <!-- the date added of each task -->
     <div class="row">
       <div class="col-12 date-container">
         <p>
@@ -40,5 +47,7 @@ task block.
         </p>
       </div>
     </div>
+
+
   </div>
 </div>

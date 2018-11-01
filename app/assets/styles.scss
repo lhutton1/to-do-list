@@ -1,4 +1,4 @@
-/* @mixins */
+/* mixins */
 @mixin appearence($value) {
   -webkit-appearance:     $value;
   -moz-appearance:        $value;
@@ -7,6 +7,8 @@
   appearance:             $value;
 }
 
+
+/* page formatting */
 html {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -23,6 +25,8 @@ html {
   display:none !important;
 }
 
+
+/* content formatting */
 body {
   margin: 0;
   padding: 0;

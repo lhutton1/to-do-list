@@ -53,6 +53,8 @@ def addNewTask():
 
 """
 Remove a task
+
+Removes task of given ID from the database.
 """
 @app.route('/removeTask', methods=['GET'])
 def removeTask():
@@ -69,7 +71,7 @@ def removeTask():
 
 
 """
-Mask task as complete or incomplete
+Mark task as complete or incomplete
 """
 @app.route('/markTask', methods=['GET'])
 def markTask():

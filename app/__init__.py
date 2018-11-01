@@ -8,9 +8,10 @@ from config import Config
 app = Flask(__name__)
 app.config.from_object(Config)
 
-# add jinja 2 extensions
+# jinja 2 extensions
 app.jinja_env.add_extension('jinja2.ext.do')
 
+# flask add ons
 Scss(app)
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)

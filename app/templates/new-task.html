@@ -1,3 +1,7 @@
+<!--
+New task template. A template for creating a new task.
+This page displays a form which canbe used to add a new task to the database.
+-->
 {% extends "base.html" %}
 {% block content %}
 <div id="content-container" class="container">
@@ -6,6 +10,8 @@
       <div class="new-task jumbotron">
         <form action="" method="post" novalidate>
             {{ form.hidden_tag() }}
+
+            <!-- title input -->
             <h4 class="lead">
               {{ form.title() }}
               {% if form.title.errors %}
@@ -14,7 +20,10 @@
                 {% endfor %}
               {% endif %}
             </h4>
+
             <hr class="my-4">
+
+            <!-- description input -->
             <p>
               {{ form.description() }}
               {% if form.description.errors %}
@@ -23,6 +32,8 @@
                 {% endfor %}
               {% endif %}
             </p>
+
+            <!-- submit button -->
             {{ form.submit(class_='btn btn btn-outline-success btn-sm') }}
 
             <button id="cancel-edit" type="button" class="btn btn btn-outline-danger btn-sm" aria-label="Cancel" onclick="document.location.href='/';">

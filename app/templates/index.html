@@ -1,3 +1,8 @@
+<!--
+Main index page template. Loops through all the tasks in the database and adds
+them one after another.
+-->
+
 {% extends "base.html" %}
 {% block content %}
 <div id="content-container" class="container">
@@ -5,7 +10,7 @@
       {% for task in tasks %}
       <div class="col-12">
         <p>
-          {% with taskDetails = task, edit = isEdit %}
+          {% with taskDetails = task %}
             {% include'task.html' %}
           {% endwith %}
         </p>
