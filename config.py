@@ -9,10 +9,6 @@ class Config(object):
     SQLALCHEMY_TRACK_MODIFICATIONS = False
 
     WTF_CSRF_ENABLED = True
-
-    """
-    In production change this value to one that is more secure!!
-    """
     SECRET_KEY = 'a-very-secret-secret'
 
     """
